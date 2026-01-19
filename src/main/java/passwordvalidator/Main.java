@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String args[]) {
-        boolean passwordIsValid = false;
         System.out.println("Select a username:");
         Scanner scanner = new Scanner(System.in);
         String username = scanner.next();
@@ -17,10 +16,11 @@ public class Main {
                 System.out.println("Password needs to be at least 8 characters. Try again!");
                 password = scanner.next();
             }
-            if(PasswordValidation.isLongEnough(password)) {
-                passwordIsValid = true;
+            while (!PasswordValidation.hasUpperCase(password)) {
+                System.out.println("Password needs to have at least one upper case character. Try again!");
+                password = scanner.next();
             }
-        } while (passwordIsValid = false);
+        } while (!PasswordValidation.isLongEnough(password) || !PasswordValidation.hasUpperCase(password));
         System.out.println("Password has been set!");
     }
 }

@@ -20,7 +20,12 @@ public class Main {
                 System.out.println("Password needs to have at least one upper case character. Try again!");
                 password = scanner.next();
             }
-        } while (!PasswordValidation.isLongEnough(password) || !PasswordValidation.hasUpperCase(password));
+            while (!PasswordValidation.hasSpecialCharacter(password)) {
+                System.out.println("Password needs to have at least one special character. Try again!");
+                password = scanner.next();
+            }
+        } while (!PasswordValidation.isLongEnough(password) || !PasswordValidation.hasUpperCase(password) ||
+                !PasswordValidation.hasSpecialCharacter(password));
         System.out.println("Password has been set!");
     }
 }

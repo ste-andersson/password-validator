@@ -21,4 +21,14 @@ public class PasswordValidation {
         return false;
     }
 
+    public static boolean hasSpecialCharacter(String password) {
+        for (int i = 0; i < password.length(); i++){
+            char a = password.charAt(i);
+            if (!Character.isLetterOrDigit(a)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

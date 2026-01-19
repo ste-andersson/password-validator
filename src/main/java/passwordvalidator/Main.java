@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String args[]) {
+        String oldPassword = "superStar*#1";
         System.out.println("Select a username:");
         Scanner scanner = new Scanner(System.in);
         String username = scanner.next();
@@ -28,9 +29,15 @@ public class Main {
                 System.out.println("Password must not contain your username. Try again!");
                 password = scanner.next();
             }
+            while (!PasswordValidation.isNotOldPassword(password, oldPassword)) {
+                System.out.println("Password must not be same as old password. Try again!");
+                password = scanner.next();
+            }
         } while (!PasswordValidation.isLongEnough(password) || !PasswordValidation.hasUpperCase(password) ||
-                !PasswordValidation.hasSpecialCharacter(password) || !PasswordValidation.doesNotContainUsername(password, username));
-        System.out.println("Password has been set!");
+                !PasswordValidation.hasSpecialCharacter(password) || !PasswordValidation.doesNotContainUsername(password, username) ||
+                !PasswordValidation.isNotOldPassword(password, oldPassword));
+        String confirmedPassword = password;
+        System.out.println(String.format("Password has been set to %s!", confirmedPassword));
 
     }
 }

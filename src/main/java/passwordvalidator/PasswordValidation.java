@@ -22,7 +22,7 @@ public class PasswordValidation {
     }
 
     public static boolean hasSpecialCharacter(String password) {
-        for (int i = 0; i < password.length(); i++){
+        for (int i = 0; i < password.length(); i++) {
             char a = password.charAt(i);
             if (!Character.isLetterOrDigit(a)) {
                 return true;
@@ -31,4 +31,10 @@ public class PasswordValidation {
         return false;
     }
 
+    public static boolean doesNotContainUsername(String password, String username) {
+        if(password.indexOf(username) == -1){
+            return true;
+        }
+        return false;
+    }
 }

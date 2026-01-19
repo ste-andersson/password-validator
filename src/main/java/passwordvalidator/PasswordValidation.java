@@ -37,4 +37,11 @@ public class PasswordValidation {
         }
         return false;
     }
+
+    public static boolean isNotOldPassword(String password, String oldPassword) {
+        if(password.equals(oldPassword)){
+            return false;
+        }
+        return true;
+    }
 }
